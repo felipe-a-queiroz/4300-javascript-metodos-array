@@ -27,7 +27,7 @@ body {
 }
 
 .banner {
-  background-image: url('/imagens/Banner-1.png');
+  background-image: url('/img/Banner-1.png');
   background-repeat: no-repeat;
   background-size: cover;
   height: 278px;
@@ -139,7 +139,7 @@ body {
   font-weight: 500;
   line-height: 24px;
   font-size: 2.5em;
-} 
+}
 
 .rodape {
   width: 100%;
