@@ -22,6 +22,3 @@ botoesFiltro.forEach(botao => {
         exibirLivrosNaTela(livrosFiltrados);
     });
 });
-
-
-export default livros;
