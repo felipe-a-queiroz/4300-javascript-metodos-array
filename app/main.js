@@ -16,12 +16,14 @@ async function getBuscarLivrosDaAPI() {
 }
 
 const botoesFiltro = document.querySelectorAll("#btnFiltrarLivrosFront, #btnFiltrarLivrosBack, #btnFiltrarLivrosDados");
+const valorTotalDisponiveis = document.getElementById("valor_total_livros_disponiveis");
 
 botoesFiltro.forEach(botao => {
     const categoria = botao.value;
     botao.addEventListener("click", () => {
         const livrosFiltrados = filtrarLivros(categoria, livros);
         exibirLivrosNaTela(livrosFiltrados);
+        valorTotalDisponiveis.innerHTML = "";
     });
 });
 
@@ -33,6 +35,17 @@ botaoOrdenar.addEventListener("click", () => {
 
 const botaoDisponiveis = document.getElementById("btnLivrosDisponiveis");
 botaoDisponiveis.addEventListener("click", () => {
-    const livrosDisponiveis = livros.filter(livro => livro.quantidade > 0);
+    let somaDosLivrosDisponiveis = obterLivrosDisponiveis().reduce((acc, livro) => acc + livro.preco, 0);
+    valorTotalDisponiveis.innerHTML = `
+    <div class="livros__disponiveis">
+      <p>Todos os livros disponíveis por R$ <span id="valor">${somaDosLivrosDisponiveis.toFixed(2)}</span></p>
+    </div>
+    `;
+    const livrosDisponiveis = obterLivrosDisponiveis();
     exibirLivrosNaTela(livrosDisponiveis);
 });
+
+function obterLivrosDisponiveis() {
+    return livros.filter(livro => livro.quantidade > 0);
+}
+
