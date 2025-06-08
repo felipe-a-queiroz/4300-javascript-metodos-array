@@ -30,3 +30,9 @@ botaoOrdenar.addEventListener("click", () => {
     const livrosOrdenados = ordenarLivros(livros);
     exibirLivrosNaTela(livrosOrdenados);
 });
+
+const botaoDisponiveis = document.getElementById("btnLivrosDisponiveis");
+botaoDisponiveis.addEventListener("click", () => {
+    const livrosDisponiveis = livros.filter(livro => livro.quantidade > 0);
+    exibirLivrosNaTela(livrosDisponiveis);
+});

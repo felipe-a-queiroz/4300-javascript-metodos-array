@@ -2,9 +2,15 @@ function exibirLivrosNaTela(listaDeLivros) {
     const elementoParaInserirLivros = document.getElementById("livros");
     elementoParaInserirLivros.innerHTML = "";
     listaDeLivros.forEach(livro => {
+        let disponibilidade = verificarDisponibilidade(livro);
         const elementoLivro = criarElementoLivro(livro);
+        elementoLivro.classList.add(disponibilidade);
         elementoParaInserirLivros.appendChild(elementoLivro);
     });
+}
+
+function verificarDisponibilidade(livro) {
+    return livro.quantidade > 0 ? null : "indisponivel";
 }
 
 function criarElementoLivro(livro) {
